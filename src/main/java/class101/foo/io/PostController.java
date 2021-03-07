@@ -1,12 +1,4 @@
 package class101.foo.io;
-
-
-
-
-
-
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -46,5 +38,8 @@ public class PostController {
 
     
     // 4. 글 내용으로 검색 -> 해당 내용이 포함된 모든 글
-
+    @GetMapping("/search")
+    public List<Post> findPostByContent(@RequestParam String content){
+        return postRepository.findByContentContains((content));
+    }
 }
